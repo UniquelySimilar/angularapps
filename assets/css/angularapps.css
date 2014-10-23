@@ -1,0 +1,16 @@
+/* angularapps.css */
+.customer-table,
+.customer-table th,
+.customer-table td {
+	border: 1px solid grey;
+	border-collapse: collapse;
+	padding: 5px;
+}
+
+.customer-table tr:nth-child(odd)	{
+	background-color: #f1f1f1;
+}
+
+.customer-table tr:nth-child(even) {
+	background-color: #ffffff;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>W3Schools Angular Tutorial</title>
+	<meta name="description" content="HTML5 Template">
+
+	<link rel="stylesheet" type="text/css" href="../assets/css/angularapps.css">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<div data-ng-app="" ng-controller="customersController"> 
+
+		<table class="customer-table">
+			<tr data-ng-repeat="x in names | orderBy : 'Country'">
+				<td>{{ x.Name }}</td>
+				<td>{{ x.Country }}</td>
+			</tr>
+		</table>
+
+<!--
+		<ul>
+			<li data-ng-repeat="x in names">
+				{{ x.Name + ', ' + x.Country }}
+			</li>
+		</ul>
+-->
+
+	</div>
+	<script src="../assets/angular/angular.js"></script>
+	<script>
+		function customersController($scope,$http) {
+//				$http.get("http://www.w3schools.com/website/Customers_JSON.php")
+				$http.get("http://angularapps.localhost/w3schools_tutorial/customers.json")
+				.success(function(response) {
+					$scope.names = response;
+				});
+		}
+	</script>
+</body>
+</html>
