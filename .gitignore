@@ -6,7 +6,7 @@
 
 # Assets
 /lib/angular*
-/w3schools_tutorial/assets/lib/bootstrap/
+/w3schools_tutorial/assets/lib/
 
 # Config
 /w3schools_tutorial/app/components/customers/php/config.ini
