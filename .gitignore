@@ -4,4 +4,5 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-/assets/angular*
+/lib/angular*
+/w3schools_tutorial/app/components/customers/php/config.ini

@@ -7,7 +7,7 @@
 	<title>W3Schools Angular Tutorial</title>
 	<meta name="description" content="HTML5 Template">
 
-	<link rel="stylesheet" type="text/css" href="../assets/css/angularapps.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/w3schools_tut.css">
 
 	<!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -15,33 +15,38 @@
 </head>
 
 <body>
-	<div data-ng-app="" ng-controller="customersController"> 
+	<div data-ng-app="customersApp" ng-controller="customersController">
+		<h2>Customers</h2>
 
 		<table class="customer-table">
-			<tr data-ng-repeat="x in names | orderBy : 'Country'">
-				<td>{{ x.Name }}</td>
-				<td>{{ x.Country }}</td>
+			<tr data-ng-repeat="x in customers | orderBy : 'name'">
+				<td>{{ x.name }}</td>
+				<td>{{ x.street }}</td>
+				<td>{{ x.city }}</td>
+				<td>{{ x.state }}</td>
+				<td>{{ x.zipcode }}</td>
 			</tr>
 		</table>
 
-<!--
-		<ul>
-			<li data-ng-repeat="x in names">
-				{{ x.Name + ', ' + x.Country }}
-			</li>
-		</ul>
--->
-
 	</div>
-	<script src="../assets/angular/angular.js"></script>
+
+	<script src="../lib/angular/angular.js"></script>
+
 	<script>
-		function customersController($scope,$http) {
-//				$http.get("http://www.w3schools.com/website/Customers_JSON.php")
-				$http.get("http://angularapps.localhost/w3schools_tutorial/customers.json")
-				.success(function(response) {
-					$scope.names = response;
-				});
-		}
+		var customersApp = angular.module("customersApp", []);
+
+		customersApp.controller("customersController", function customersController($scope,$http) {
+			var site = "http://angularapps.localhost";
+			var page = "/w3schools_tutorial/app/components/customers/php/customers_mysql.php";
+//			var page = "/w3schools_tutorial/app/components/customers/customers.json";
+
+			$http.get(site + page)
+			.success(function(response) {
+				$scope.customers = response;
+//				console.log(response);
+			});
+
+		});
 	</script>
 </body>
 </html>
