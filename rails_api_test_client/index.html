@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html lang="en" data-ng-app="customersApp">
+<html lang="en" data-ng-app="railsApiTestClient">
 <head>
 	<meta charset="utf-8">
 
-	<title>W3Schools Angular Tutorial</title>
-	<meta name="description" content="HTML5 Template">
+	<title>Rails API Test Client</title>
+	<meta name="description" content="Rails API Test Client">
 
 	<!-- Bootstrap -->
 	<link href="../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -17,27 +17,27 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
-	<!-- Application
-	<link rel="stylesheet" type="text/css" href="assets/css/w3schools_tut.css">
-	 -->
+	<!-- Application -->
+	
 </head>
 
 <body data-ng-controller="customersController">
+	<h2>Rails JSON API Test Client using AngularJS</h2>
 
-	<div ng-include="'app/components/customers/customersView.html'"></div>
+	<div data-ng-view></div>
 
 	<!-- Angular -->
-
 	<script src="../lib/angular/angular.js"></script>
+	<script src="../lib/angular/angular-route.js"></script>
 
 	<!-- Application scripts -->
 	<script src="app/app.module.js"></script>
-	<script src="app/components/customers/customersController.js"></script>
+	<script src="app/components/customers/customers_controller.js"></script>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="assets/lib/bootstrap/js/bootstrap.js"></script>
+	<script src="../lib/bootstrap/js/bootstrap.js"></script>
 
 </body>
 </html>
