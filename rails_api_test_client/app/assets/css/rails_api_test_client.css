@@ -1,0 +1,4 @@
+/* Padding to compensate for fixed navbar */
+body {
+	padding-top: 50px;
+}

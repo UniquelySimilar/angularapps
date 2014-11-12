@@ -6,14 +6,20 @@ customersApp.config( function($routeProvider) {
 
 	// Route for the 'index' page
 	.when('/', {
-		templateUrl : 'app/components/customers/customer_index.html',
+		templateUrl : 'app/views/customers/customer_index.html',
 		controller  : 'CustomerIndexController'
+	})
+
+	// Route for the 'show' page
+	.when('/:id', {
+		templateUrl : 'app/views/customers/customer_show.html',
+		controller  : 'CustomerShowController'
 	});
 });
 
 // Factories
 customersApp.factory('Customer', function($resource) {
-	return $resource('http://railsapitest.localhost/api/customers/:id', { id: '@_id' }, {
+	return $resource('http://railsapitest.localhost/api/customers/:id', {
 		update: {
 			method: 'PUT' // this method issues a PUT request
 		}
