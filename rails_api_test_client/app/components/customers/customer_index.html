@@ -1,0 +1,14 @@
+<div class="container">
+	<h2>Customers</h2>
+
+	<table class="table">
+		<tr data-ng-repeat="customer in customers | orderBy : 'name'">
+			<td>{{ customer.name }}</td>
+			<td>{{ customer.street }}</td>
+			<td>{{ customer.city }}</td>
+			<td>{{ customer.state }}</td>
+			<td>{{ customer.zipcode }}</td>
+		</tr>
+	</table>
+
+</div>

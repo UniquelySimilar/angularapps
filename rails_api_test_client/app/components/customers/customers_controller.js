@@ -1,11 +1,10 @@
-customersApp.controller("customersController", function customersController($scope, $http) {
-	var site = "http://railsapitest.localhost";
-	var page = "/api/customers";
+customersApp.controller('CustomerIndexController', function($scope, Customer) {
 
-	$http.get(site + page)
-	.success(function(response) {
-		$scope.customers = response;
-//		console.log(response);
-	});
+	$scope.customers = Customer.query(); //query() returns all the entries
+
+})
+.controller('CustomerShowController', function($scope, Customer) {
+
+	$scope.customers = Customer.query(); //query() returns all the entries
 
 });
