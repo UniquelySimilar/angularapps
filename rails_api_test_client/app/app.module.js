@@ -9,12 +9,18 @@ customersApp.config( function($routeProvider) {
 		templateUrl : 'app/views/customers/customer_index.html',
 		controller  : 'CustomerIndexController'
 	})
+	// Route for the 'new' page
+	.when('/new', {
+		templateUrl : 'app/views/customers/customer_new.html',
+		controller  : 'CustomerNewController'
+	})
 
 	// Route for the 'show' page
 	.when('/:id', {
 		templateUrl : 'app/views/customers/customer_show.html',
 		controller  : 'CustomerShowController'
 	});
+
 });
 
 // Factories

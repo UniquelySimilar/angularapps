@@ -4,6 +4,9 @@ customersApp.controller('CustomerIndexController', function($scope, Customer) {
 .controller('CustomerShowController', function($scope, $routeParams, Customer) {
 	$scope.customer = Customer.get({id: $routeParams.id});
 })
+.controller('CustomerNewController', function($scope, Customer) {
+	$scope.customer = new Customer();
+})
 .controller('CustomerCreateController', function($scope, Customer) {
 	console.log("Hello from CustomerCreateController");
 
