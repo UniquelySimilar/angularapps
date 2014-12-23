@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>Contact API Test Client</title>
+	<meta name="description" content="Contact API Test Client">
+
+	<!-- Bootstrap -->
+	<link href="../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- Application
+	<link href="app/assets/css/rails_api_test_client.css" rel="stylesheet">
+	 -->
+	
+</head>
+
+<body data-ng-app="contactApp">
+	<h2>Contact API Test Client</h2>
+
+	<div class="container">
+		<div data-ng-controller="ContactController">
+
+<h2>Register Contact</h2>
+
+{{ status }}
+
+<form data-ng-submit="processContact()" class="form-horizontal">
+	<div class="form-group">
+		<label for="name" class="col-md-2 control-label">NAME</label>
+		<div class="col-md-4">
+			<input type="text" id="name" class="form-control" data-ng-model="contact.name">
+		</div>
+		<!-- Logic to determine if validation error should be displayed -->
+		<div class="col-md-6">
+			<span class="control-label validation-err" >Validation error here</span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="email" class="col-md-2 control-label">EMAIL</label>
+		<div class="col-md-4">
+			<input type="text" id="email" class="form-control" data-ng-model="contact.email">
+		</div>
+		<!-- Logic to determine if validation error should be displayed -->
+		<div class="col-md-6">
+			<span class="control-label validation-err" >Validation error here</span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="comment" class="col-md-2 control-label">COMMENT</label>
+		<div class="col-md-4">
+			<input type="text" id="street" class="form-control" data-ng-model="contact.comment">
+		</div>
+		<!-- Logic to determine if validation error should be displayed -->
+		<div class="col-md-6">
+			<span class="control-label validation-err" >Validation error here</span>
+		</div>
+	</div>
+	
+	<input type="submit" id="submit" value="Register Contact" class="btn btn-primary" />
+	<!--<button class="btn btn-primary" ng-click="saveCustomer()">Create Customer</button>-->
+	<!--<a class="btn btn-default" href="#" role="button">Create Customer</a>-->
+	<a class="btn btn-default" href="#" role="button">Cancel</a>
+</form>
+
+
+		</div>
+	</div>
+
+	<!-- Angular -->
+	<script src="../lib/angular/angular.js"></script>
+	<!-- <script src="../lib/angular/angular-route.js"></script> -->
+	<!-- <script src="../lib/angular/angular-resource.js"></script> -->
+
+	<!-- Application scripts -->
+	<script src="angular_app/app.module.js"></script>
+	<!-- <script src="app/controllers/customers_controller.js"></script> -->
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="../lib/jquery/jquery.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="../lib/bootstrap/js/bootstrap.js"></script>
+
+</body>
+</html>
