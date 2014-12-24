@@ -6,7 +6,7 @@ contactApp.controller('ContactController', function($scope, $http) {
 
 	$scope.processContact = function() {
 		// Simple POST request example (passing data) :
-		$http.post('http://associations.localhost/api/contacts', $scope.contact).
+		$http.post('http://contactservice.localhost/api/contacts', $scope.contact).
 			success(function(data, status, headers, config) {
 				// this callback will be called asynchronously
 				// when the response is available
@@ -16,6 +16,7 @@ contactApp.controller('ContactController', function($scope, $http) {
 				// called asynchronously if an error occurs
 				// or server returns response with an error status.
 				$scope.status = status;
+				$scope.error = data['errors'];
 			});
 	};
 });
