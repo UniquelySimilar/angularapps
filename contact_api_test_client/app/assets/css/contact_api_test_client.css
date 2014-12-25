@@ -1,3 +1,11 @@
 .validation-err {
 	color:	red;
 }
+
+.submit-success {
+	color:	green;
+}
+
+.big-text {
+	font-size: 130%;
+}
