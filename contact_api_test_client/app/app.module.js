@@ -1,8 +1,9 @@
 var contactApp = angular.module("contactApp", []);
 
 contactApp.controller('ContactController', function($scope, $http) {
-	$scope.contact = {};
+//	$scope.contact = {};
 	$scope.status = "";
+	$scope.errors = "";
 
 	$scope.processContact = function() {
 		// Simple POST request example (passing data) :
@@ -11,12 +12,13 @@ contactApp.controller('ContactController', function($scope, $http) {
 				// this callback will be called asynchronously
 				// when the response is available
 				$scope.status = status;
+				$scope.contact = {};
 			}).
 			error(function(data, status, headers, config) {
 				// called asynchronously if an error occurs
 				// or server returns response with an error status.
 				$scope.status = status;
-				$scope.error = data['errors'];
+				$scope.errors = data['errors'];
 			});
 	};
 });

@@ -17,9 +17,8 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
-	<!-- Application
-	<link href="app/assets/css/rails_api_test_client.css" rel="stylesheet">
-	 -->
+	<!-- Application -->
+	<link href="app/assets/css/contact_api_test_client.css" rel="stylesheet">
 	
 </head>
 
@@ -31,8 +30,8 @@
 
 <h2>Register Contact</h2>
 
-{{ status }}
-{{ error }}
+Response status: {{ status }}<br />
+Errors: {{ errors }}
 
 <form data-ng-submit="processContact()" class="form-horizontal">
 	<div class="form-group">
@@ -42,7 +41,7 @@
 		</div>
 		<!-- Logic to determine if validation error should be displayed -->
 		<div class="col-md-6">
-			<span class="control-label validation-err" >Validation error here</span>
+			<span class="control-label validation-err" >{{ errors.name }}</span>
 		</div>
 	</div>
 
@@ -53,7 +52,7 @@
 		</div>
 		<!-- Logic to determine if validation error should be displayed -->
 		<div class="col-md-6">
-			<span class="control-label validation-err" >Validation error here</span>
+			<span class="control-label validation-err" >{{ errors.email }}</span>
 		</div>
 	</div>
 
@@ -64,7 +63,7 @@
 		</div>
 		<!-- Logic to determine if validation error should be displayed -->
 		<div class="col-md-6">
-			<span class="control-label validation-err" >Validation error here</span>
+			<span class="control-label validation-err" >{{ errors.comment }}</span>
 		</div>
 	</div>
 	
@@ -84,7 +83,7 @@
 	<!-- <script src="../lib/angular/angular-resource.js"></script> -->
 
 	<!-- Application scripts -->
-	<script src="angular_app/app.module.js"></script>
+	<script src="app/app.module.js"></script>
 	<!-- <script src="app/controllers/customers_controller.js"></script> -->
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
