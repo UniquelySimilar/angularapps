@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html data-ng-app="customDirectiveApp" data-ng-strict-di >
+<head>
+	<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css" />
+
+</head>
+<body>
+
+	<!-- HEADER AND NAVBAR -->
+	<header>
+		<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Custom Directives App</a>
+			</div>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#home">Home</a></li>
+				<li><a href="#about">About</a></li>
+			</ul>
+		</div>
+		</nav>
+	</header>
+
+	<!-- MAIN CONTENT AND INJECTED VIEWS -->
+	<div id="main">
+		<!-- angular templating -->
+		<!-- this is where content will be injected -->
+		<div data-ng-view></div>
+
+	</div>
+
+	<!-- Angular -->
+	<script src="../lib/angular/angular.js"></script>
+	<script src="../lib/angular/angular-route.js"></script>
+
+	<!-- Application -->
+	<script src="app/app.module.js"></script>
+	<script src="app/app.routes.js"></script>
+	<script src="app/components/home/homeController.js"></script>
+	<script src="app/components/about/aboutController.js"></script>
+</body>
+</html>
