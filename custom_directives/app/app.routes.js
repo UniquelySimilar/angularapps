@@ -9,6 +9,10 @@ customDirectiveApp.config( function($routeProvider) {
 		templateUrl : 'app/components/about/about.html',
 		controller  : 'aboutController'
 	})
+	.when('/customer', {
+		templateUrl : 'app/components/customer/customer.html',
+		controller  : 'customerController'
+	})
 	.otherwise({
 		redirectTo  : '/home'
 	});
