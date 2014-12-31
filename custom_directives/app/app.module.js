@@ -1,2 +1,2 @@
 // Create the app module
-var customDirectiveApp = angular.module('customDirectiveApp', ['ngRoute']);
+var directiveApp = angular.module('customDirectiveApp', ['ngRoute']);
