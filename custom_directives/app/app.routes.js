@@ -9,6 +9,10 @@ directiveApp.config( function($routeProvider) {
 		templateUrl : 'app/components/custom/customer/customer.html',
 		controller  : 'customerController'
 	})
+	.when('/popover', {
+		templateUrl : 'app/components/custom/popover/popover.html',
+		controller  : 'popoverController'
+	})
 	.otherwise({
 		redirectTo  : '/about'
 	});
