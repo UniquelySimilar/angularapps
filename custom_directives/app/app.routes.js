@@ -13,6 +13,10 @@ directiveApp.config( function($routeProvider) {
 		templateUrl : 'app/components/custom/popover/popover.html',
 		controller  : 'popoverController'
 	})
+	.when('/collapse', {
+		templateUrl : 'app/components/custom/collapse/collapse.html',
+		controller  : 'collapseController'
+	})
 	.otherwise({
 		redirectTo  : '/about'
 	});
