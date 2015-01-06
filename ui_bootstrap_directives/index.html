@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html data-ng-app="uiBootstrapDirectivesApp" data-ng-strict-di >
+<head>
+	<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css" />
+
+</head>
+<body>
+
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">UI Bootstrap Directives App</a>
+				</div>
+
+				<ul class="nav navbar-nav">
+					<li><a href="#about">About</a></li>
+					<li class="dropdown">
+						<a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">UI Bootstrap Directives<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#accordian">Accordian</a></li>
+							<li><a href="#tabs">Tabs</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container">
+		<div data-ng-view></div>
+	</div>
+
+	<!-- jQuery -->
+	<script src="../lib/jquery/jquery.js"></script>
+
+	<!-- Bootstrap -->
+	<script src="../lib/bootstrap/js/bootstrap.js"></script>
+
+	<!-- Angular -->
+	<script src="../lib/angular/angular.js"></script>
+	<script src="../lib/angular/angular-route.js"></script>
+	<script src="../lib/angular/ui-bootstrap-tpls-0.12.0.js"></script>
+
+	<!-- Application -->
+	<script src="app/app.module.js"></script>
+	<script src="app/app.routes.js"></script>
+	<script src="app/components/about/aboutController.js"></script>
+	<script src="app/components/accordian/accordianController.js"></script>
+	<script src="app/components/tabs/tabsController.js"></script>
+</body>
+</html>
