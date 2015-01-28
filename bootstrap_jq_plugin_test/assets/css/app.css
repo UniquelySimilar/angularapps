@@ -1,0 +1,57 @@
+/* Needed to compensate for not using 'href' in nav tabs */
+.nav, .pagination, .carousel, .panel-title a {
+	cursor: pointer;
+}
+
+/* Nav tabs */
+.nav-tabs li.active a,
+.nav-tabs li.active a:focus {
+	background-color: #f5f5f5;
+}
+
+.tab-pane ul li {
+	font-size: 125%;
+}
+
+/* Tab control */
+.tab-pane ul {
+	display: table;
+	margin: 0 auto;
+}
+
+.tab-container {
+	padding: 10px;
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+}
+
+/* Unordered list */
+.icon-list li {
+	padding: 0 0 5px 20px;
+	display: block;
+	position: relative;
+}
+
+.icon-list li:before {
+	font-family: 'Glyphicons Halflings';
+	position: absolute;
+	left: 0px;
+	top:3px;
+	font-size:80%
+}
+
+.chevron-right li:before {
+	content: '\e080';
+}
+
+.cog li:before {
+	content: "\e019";
+}
+
+.certificate li:before {
+	content: "\e124";
+}
+
+.hand-right li:before {
+	content: "\e127";
+}
