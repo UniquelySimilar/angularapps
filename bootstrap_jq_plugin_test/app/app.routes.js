@@ -5,6 +5,10 @@ bootstrapJqPluginsTestApp.config( function($routeProvider) {
 		templateUrl : 'app/components/tabs/tabs.html',
 		controller  : 'tabsController'
 	})
+	.when('/accordian', {
+		templateUrl : 'app/components/accordian/accordian.html',
+		controller  : 'accordianController'
+	})
 	.otherwise({
 		redirectTo  : '/tabs'
 	});
