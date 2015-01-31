@@ -17,6 +17,10 @@ directiveApp.config( function($routeProvider) {
 		templateUrl : 'app/components/custom/collapse/collapse.html',
 		controller  : 'collapseController'
 	})
+	.when('/images', {
+		templateUrl : 'app/components/custom/images/images.html',
+		controller  : 'imagesController'
+	})
 	.otherwise({
 		redirectTo  : '/about'
 	});
