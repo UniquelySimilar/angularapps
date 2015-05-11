@@ -1,0 +1,13 @@
+.service-row {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.checkbox-wrapper {
+	background-color: #f0f0f0;
+	border-radius: 5px;
+}
+
+.price {
+	margin-top: 10px;
+}
