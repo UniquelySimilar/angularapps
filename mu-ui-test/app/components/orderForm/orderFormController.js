@@ -23,6 +23,6 @@ muApp.controller('OrderFormController', ['$scope', function($scope) {
 	};
 
 	$scope.processForm = function() {
-
+		console.log("Form submitted");
 	};
 }]);
