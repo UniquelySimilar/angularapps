@@ -6,7 +6,6 @@ formApp.controller('formController', function($scope, $http) {
   // create a blank object to hold our form information
   // $scope will allow this to pass between controller and view
   $scope.formData = {};
-  $scope.success = false;
 
   // process the form
   $scope.processForm = function() {
@@ -24,11 +23,16 @@ formApp.controller('formController', function($scope, $http) {
 	      // if not successful, bind errors to error variables
 	      $scope.errorName = data.errors.name;
 	      $scope.errorSuperhero = data.errors.superheroAlias;
+			  $scope.success = false;
 	    } else {
 	      // if successful, bind success message to message
 	      $scope.message = data.message;
 	      $scope.success = true;
 	    }
+	  })
+	  .error(function(data, status) {
+			$scope.message = 'Request failed - status ' + status;
+      $scope.success = false;
 	  });
   };
 });

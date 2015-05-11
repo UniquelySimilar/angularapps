@@ -27,8 +27,9 @@
     <h1><span class="glyphicon glyphicon-tower"></span> Submitting Forms with Angular</h1>
   </div>
 
-  <!-- SUCCESS MESSAGE -->
-  <div id="messages" class="alert alert-success" data-ng-show="success">{{ message }}</div>
+  <!-- REQUEST STATUS MESSAGE -->
+  <div id="messages" class="alert" data-ng-class="{ 'alert-success': success, 'alert-danger': !success }"
+   data-ng-show="message">{{ message }}</div>
 
   <!-- FORM -->
   <form data-ng-submit="processForm()">
