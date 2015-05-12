@@ -1,0 +1,43 @@
+<div>
+	<h1>Order Detail</h1>
+	<h3>Services selected</h3>
+
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table table-bordered">
+				<thead class="font-bold">
+					<tr>
+						<td>SERVICE</td>
+						<td>PRICE</td>
+					</tr>
+				</thead>
+				<tfoot class="font-bold">
+					<tr>
+						<td>TOTAL</td>
+						<td>{{ orderTotal | currency:"$":0 }}</td>
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr data-ng-show="formData.serviceOptions.webdev">
+						<td>web development</td>
+						<td>$200</td>
+					</tr>
+					<tr data-ng-show="formData.serviceOptions.webdesign">
+						<td>web design</td>
+						<td>$250</td>
+					</tr>
+					<tr data-ng-show="formData.serviceOptions.photo">
+						<td>photography</td>
+						<td>$100</td>
+					</tr>
+					<tr data-ng-show="formData.serviceOptions.coffee">
+						<td>coffee drinking</td>
+						<td>$10</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+  <button type="button" class="btn btn-default" data-ng-click="newOrderForm()">Order Form</button>
+</div>

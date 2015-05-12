@@ -1,10 +1,12 @@
 muApp.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
-		.when('/order', {
+		.when('/orderform', {
 			templateUrl : 'app/components/orderForm/orderFormView.html',
-			controller  : 'OrderFormController'
+		})
+		.when('/orderdetail', {
+			templateUrl : 'app/components/orderDetail/orderDetailView.html',
 		})
 		.otherwise({
-			redirectTo: '/order'
+			redirectTo: '/orderform'
 		});
 }]);

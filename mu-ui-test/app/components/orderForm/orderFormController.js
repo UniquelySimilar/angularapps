@@ -1,8 +1,8 @@
-muApp.controller('OrderFormController', ['$scope', function($scope) {
-	console.log('OrderFormController called');
+muApp.controller('orderFormController', ['$scope', '$location', function($scope, $location) {
+	//console.log('orderFormController called');
 
 	$scope.formData = {};
-	$scope.formTotal = 0;
+	$scope.orderTotal = 0;
 
 	$scope.addServiceOptions = function() {
 		var total = 0;
@@ -19,10 +19,28 @@ muApp.controller('OrderFormController', ['$scope', function($scope) {
 			total += 10;
 		}
 
-		$scope.formTotal = total;
+		$scope.orderTotal = total;
 	};
 
-	$scope.processForm = function() {
-		console.log("Form submitted");
+	$scope.processOrderForm = function() {
+		//console.log("Form submitted");
+
+		$location.path('/orderdetail');
+	};
+
+	$scope.newOrderForm = function() {
+		//console.log("Form submitted");
+
+		// 'serviceOptions' has been defined since at least one service checked
+		if ($scope.orderTotal > 0) {
+			$scope.formData.serviceOptions.webdev = false;
+			$scope.formData.serviceOptions.webdesign = false;
+			$scope.formData.serviceOptions.photo = false;
+			$scope.formData.serviceOptions.coffee = false;
+		}
+
+		$scope.orderTotal = 0;
+
+		$location.path('/orderform');
 	};
 }]);
