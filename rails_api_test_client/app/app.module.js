@@ -25,7 +25,7 @@ customersApp.config( function($routeProvider) {
 
 // Factories
 customersApp.factory('Customer', function($resource) {
-	return $resource('http://railsapitest.localhost/api/customers/:id', {id: '@id'}, {
+	return $resource('http://railsapitestserver.localhost/customerapi/customers/:id', {id: '@id'}, {
 		update: {
 			method: 'PUT' // this method issues a PUT request
 		}
