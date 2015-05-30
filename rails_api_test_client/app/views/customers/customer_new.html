@@ -7,8 +7,8 @@
 			<input type="text" id="name" class="form-control" data-ng-model="customer.name">
 		</div>
 		<!-- Logic to determine if validation error should be displayed -->
-		<div class="col-md-6">
-			<span class="control-label validation-err" >Validation error here</span>
+		<div class="col-md-6" data-ng-show="resp_data.errormsgs.Name">
+			<span class="control-label validation-err" >* {{ resp_data.errormsgs.Name }}</span>
 		</div>
 	</div>
 
@@ -18,8 +18,8 @@
 			<input type="text" id="street" class="form-control" data-ng-model="customer.street">
 		</div>
 		<!-- Logic to determine if validation error should be displayed -->
-		<div class="col-md-6">
-			<span class="control-label validation-err" >Validation error here</span>
+		<div class="col-md-6" data-ng-show="resp_data.errormsgs.Street">
+			<span class="control-label validation-err" >* {{ resp_data.errormsgs.Street }}</span>
 		</div>
 	</div>
 
@@ -29,8 +29,8 @@
 			<input type="text" id="city" class="form-control" data-ng-model="customer.city">
 		</div>
 		<!-- Logic to determine if validation error should be displayed -->
-		<div class="col-md-6">
-			<span class="control-label validation-err" >Validation error here</span>
+		<div class="col-md-6" data-ng-show="resp_data.errormsgs.City">
+			<span class="control-label validation-err" >* {{ resp_data.errormsgs.City }}</span>
 		</div>
 	</div>
 
@@ -43,8 +43,8 @@
 			</select>
 		</div>
 		<!-- Logic to determine if validation error should be displayed -->
-		<div class="col-md-6">
-			<span class="control-label validation-err" >Validation error here</span>
+		<div class="col-md-6" data-ng-show="resp_data.errormsgs.State">
+			<span class="control-label validation-err" >* {{ resp_data.errormsgs.State }}</span>
 		</div>
 	</div>
 
@@ -54,8 +54,8 @@
 			<input type="text" id="zipcode" class="form-control" data-ng-model="customer.zipcode">
 		</div>
 		<!-- Logic to determine if validation error should be displayed -->
-		<div class="col-md-6">
-			<span class="control-label validation-err" >Validation error here</span>
+		<div class="col-md-6" data-ng-show="resp_data.errormsgs.Zipcode">
+			<span class="control-label validation-err" >* {{ resp_data.errormsgs.Zipcode }}</span>
 		</div>
 	</div>
 
@@ -65,8 +65,8 @@
 			<input type="text" id="home_phone" class="form-control" data-ng-model="customer.home_phone">
 		</div>
 		<!-- Logic to determine if validation error should be displayed -->
-		<div class="col-md-6">
-			<span class="control-label validation-err" >Validation error here</span>
+		<div class="col-md-6" data-ng-show="resp_data.errormsgs.Name">
+			<span class="control-label validation-err" >* {{ resp_data.errormsgs.Name }}</span>
 		</div>
 	</div>
 
@@ -76,8 +76,8 @@
 			<input type="text" id="work_phone" class="form-control" data-ng-model="customer.work_phone">
 		</div>
 		<!-- Logic to determine if validation error should be displayed -->
-		<div class="col-md-6">
-			<span class="control-label validation-err" >Validation error here</span>
+		<div class="col-md-6" data-ng-show="resp_data.errormsgs.Name">
+			<span class="control-label validation-err" >* {{ resp_data.errormsgs.Name }}</span>
 		</div>
 	</div>
 
@@ -87,8 +87,8 @@
 			<input type="text" id="email" class="form-control" data-ng-model="customer.email">
 		</div>
 		<!-- Logic to determine if validation error should be displayed -->
-		<div class="col-md-6">
-			<span class="control-label validation-err" >Validation error here</span>
+		<div class="col-md-6" data-ng-show="resp_data.errormsgs.Email">
+			<span class="control-label validation-err" >* {{ resp_data.errormsgs.Email }}</span>
 		</div>
 	</div>
 	

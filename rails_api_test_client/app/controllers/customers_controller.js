@@ -1,48 +1,52 @@
 customersApp.controller('CustomerIndexController', function($scope, Customer) {
 	$scope.customers = Customer.query();
 })
+
 .controller('CustomerShowController', function($scope, $routeParams, Customer) {
 	$scope.customer = Customer.get({id: $routeParams.id});
 })
+
 .controller('CustomerNewController', function($scope, Customer, $window) {
 	$scope.customer = new Customer();
 	// Set default state value
 	$scope.customer.state = 'Colorado';
 	$scope.customer.home_phone = '303-555-1212';
 	$scope.customer.work_phone = '303-555-1212';
+	$scope.resp_data = {};
 
-	$scope.states = statesAry;
+	$scope.states = stateOptions;
 
 	$scope.saveCustomer = function() {
+		// resource object
 		Customer.save($scope.customer,
+			// Success
 			function(value, headers){
 				console.log(value);
 				$window.location.href = '/rails_api_test_client/index.html';
 			},
-			function(res){
-				// NOTE: This error callback not called with standard setup.  Found info on web.
-				console.log('Error callback called')
-
+			// Error
+			function(response){
+				//console.log('Error callback called');
+				//console.log(response.data);
+				$scope.resp_data = response.data;
+				//console.log($scope.resp_data.errormsgs.Name);
 			});
-//		Customer.save($scope.customer);
-		// TODO: Handle possible error
-		// Force a reload of the customer 'index' page
-//		$window.location.href = '/rails_api_test_client/index.html';
 	}
-
 })
+
 .controller('CustomerUpdateController', function($scope, Customer) {
 	console.log("Hello from CustomerUpdateController");
 
 	$scope.message = "Hello from 'CustomerUpdateController'";
 })
+
 .controller('CustomerDestroyController', function($scope, Customer) {
 	console.log("Hello from CustomerDestroyController");
 
 	$scope.message = "Hello from 'CustomerDestroyController'";
 });
 
-var statesAry = {
+var stateOptions = {
 	'Alabama': 'Alabama',
 	'Alaska': 'Alaska',
 	'Arizona': 'Arizona',

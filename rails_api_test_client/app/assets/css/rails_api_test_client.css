@@ -2,3 +2,7 @@
 body {
 	padding-top: 50px;
 }
+
+.validation-err {
+	color: red;
+}
