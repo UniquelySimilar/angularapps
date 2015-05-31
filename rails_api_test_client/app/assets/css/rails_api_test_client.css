@@ -3,6 +3,14 @@ body {
 	padding-top: 50px;
 }
 
+th {
+	cursor: pointer;
+}
+
+.col-hdr-hover {
+	background-color: #F8F8F8;
+}
+
 .validation-err {
 	color: red;
 }

@@ -6,17 +6,32 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>NAME</th>
-				<th>ADDRESS</th>
-				<th>CITY</th>
-				<th>STATE</th>
-				<th>ZIP CODE</th>
+				<th
+				 data-ng-class="{ 'col-hdr-hover': name_hover }"
+				 data-ng-mouseenter="name_hover=true"  data-ng-mouseleave="name_hover=false"
+				 data-ng-click="predicate = 'name'; reverse=!reverse">NAME</th>
+				<th
+				 data-ng-class="{ 'col-hdr-hover': street_hover }"
+				 data-ng-mouseenter="street_hover=true"  data-ng-mouseleave="street_hover=false"
+				 data-ng-click="predicate = 'street'; reverse=!reverse">ADDRESS</th>
+				<th
+				 data-ng-class="{ 'col-hdr-hover': city_hover }"
+				 data-ng-mouseenter="city_hover=true"  data-ng-mouseleave="city_hover=false"
+				 data-ng-click="predicate = 'city'; reverse=!reverse">CITY</th>
+				<th
+				 data-ng-class="{ 'col-hdr-hover': state_hover }"
+				 data-ng-mouseenter="state_hover=true"  data-ng-mouseleave="state_hover=false"
+				 data-ng-click="predicate = 'state'; reverse=!reverse">STATE</th>
+				<th
+				 data-ng-class="{ 'col-hdr-hover': zipcode_hover }"
+				 data-ng-mouseenter="zipcode_hover=true"  data-ng-mouseleave="zipcode_hover=false"
+				 data-ng-click="predicate = 'zipcode'; reverse=!reverse">ZIP CODE</th>
 				<th></th>
 			</tr>
 		</thead>
 
 		<tbody>
-			<tr data-ng-repeat="customer in customers | orderBy : 'name'">
+			<tr data-ng-repeat="customer in customers | orderBy : predicate : reverse">
 				<td>{{ customer.name }}</td>
 				<td>{{ customer.street }}</td>
 				<td>{{ customer.city }}</td>

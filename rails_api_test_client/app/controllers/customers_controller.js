@@ -1,5 +1,13 @@
 customersApp.controller('CustomerIndexController', function($scope, Customer) {
 	$scope.customers = Customer.query();
+
+	$scope.predicate = 'name';
+
+	$scope.name_hover = false;
+	$scope.street_hover = false;
+	$scope.city_hover = false;
+	$scope.state_hover = false;
+	$scope.zipcode_hover = false;
 })
 
 .controller('CustomerShowController', function($scope, $routeParams, Customer) {
