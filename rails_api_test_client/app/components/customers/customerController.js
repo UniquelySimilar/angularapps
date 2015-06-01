@@ -1,5 +1,5 @@
-customersApp.controller('CustomerIndexController', function($scope, Customer, $location) {
-	$scope.customers = Customer.query();
+customersApp.controller('CustomerIndexController', function($scope, CustomerFactory, $location) {
+	$scope.customers = CustomerFactory.query();
 
 	$scope.predicate = 'name';
 
@@ -8,14 +8,23 @@ customersApp.controller('CustomerIndexController', function($scope, Customer, $l
 	$scope.city_hover = false;
 	$scope.state_hover = false;
 	$scope.zipcode_hover = false;
+
+	$scope.deleteCustomer = function(customer_id) {
+		CustomerFactory.delete( {id: customer_id},
+			// Success
+			function(){
+				$scope.customers = CustomerFactory.query();
+				//console.log("deleteCustomer() success callback");
+			});
+	}
 })
 
-.controller('CustomerShowController', function($scope, $routeParams, Customer) {
-	$scope.customer = Customer.get({id: $routeParams.id});
+.controller('CustomerShowController', function($scope, $routeParams, CustomerFactory) {
+	$scope.customer = CustomerFactory.get({id: $routeParams.id});
 })
 
-.controller('CustomerNewController', function($scope, Customer, $window) {
-	$scope.customer = new Customer();
+.controller('CustomerNewController', function($scope, CustomerFactory, $location) {
+	$scope.customer = new CustomerFactory();
 	// Set default state value
 	$scope.customer.state = 'Colorado';
 	$scope.customer.home_phone = '303-555-1212';
@@ -26,32 +35,28 @@ customersApp.controller('CustomerIndexController', function($scope, Customer, $l
 
 	$scope.saveCustomer = function() {
 		// resource object
-		Customer.save($scope.customer,
+		CustomerFactory.save($scope.customer,
 			// Success
 			function(value, headers){
-				console.log(value);
-				$window.location.href = '/rails_api_test_client/index.html';
+				//console.log(value);
+				$location.path('/');
+				//$window.location.href = '/rails_api_test_client/index.html';
 			},
 			// Error
 			function(response){
 				//console.log('Save error callback called');
 				//console.log(response.data);
 				$scope.resp_data = response.data;
-				//console.log($scope.resp_data.errormsgs.Name);
 			});
 	}
 })
 
-.controller('CustomerUpdateController', function($scope, Customer) {
+.controller('CustomerUpdateController', function($scope, CustomerFactory) {
 	console.log("Hello from CustomerUpdateController");
-
-	$scope.message = "Hello from 'CustomerUpdateController'";
 })
 
-.controller('CustomerDestroyController', function($scope, Customer) {
-	console.log("Hello from CustomerDestroyController");
-
-	$scope.message = "Hello from 'CustomerDestroyController'";
+.controller('CustomerDeleteController', function($scope, CustomerFactory) {
+	console.log("Hello from CustomerDeleteController");
 });
 
 var stateOptions = {
