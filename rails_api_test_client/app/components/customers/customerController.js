@@ -1,4 +1,4 @@
-customersApp.controller('CustomerIndexController', function($scope, Customer) {
+customersApp.controller('CustomerIndexController', function($scope, Customer, $location) {
 	$scope.customers = Customer.query();
 
 	$scope.predicate = 'name';
@@ -34,7 +34,7 @@ customersApp.controller('CustomerIndexController', function($scope, Customer) {
 			},
 			// Error
 			function(response){
-				//console.log('Error callback called');
+				//console.log('Save error callback called');
 				//console.log(response.data);
 				$scope.resp_data = response.data;
 				//console.log($scope.resp_data.errormsgs.Name);

@@ -6,18 +6,18 @@ customersApp.config( function($routeProvider) {
 
 	// Route for the 'index' page
 	.when('/', {
-		templateUrl : 'app/views/customers/customer_index.html',
+		templateUrl : 'app/components/customers/customerIndexView.html',
 		controller  : 'CustomerIndexController'
 	})
 	// Route for the 'new' page
 	.when('/new', {
-		templateUrl : 'app/views/customers/customer_new.html',
+		templateUrl : 'app/components/customers/customerNewView.html',
 		controller  : 'CustomerNewController'
 	})
 
 	// Route for the 'show' page
 	.when('/:id', {
-		templateUrl : 'app/views/customers/customer_show.html',
+		templateUrl : 'app/components/customers/customerShowView.html',
 		controller  : 'CustomerShowController'
 	});
 

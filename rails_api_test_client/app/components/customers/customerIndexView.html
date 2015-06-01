@@ -26,7 +26,8 @@
 				 data-ng-class="{ 'col-hdr-hover': zipcode_hover }"
 				 data-ng-mouseenter="zipcode_hover=true"  data-ng-mouseleave="zipcode_hover=false"
 				 data-ng-click="predicate = 'zipcode'; reverse=!reverse">ZIP CODE</th>
-				<th></th>
+				<th></th><!-- SHOW -->
+				<th></th><!-- DELETE -->
 			</tr>
 		</thead>
 
@@ -37,7 +38,8 @@
 				<td>{{ customer.city }}</td>
 				<td>{{ customer.state }}</td>
 				<td>{{ customer.zipcode }}</td>
-				<td><a href="#/{{ customer.id }}">SHOW</a></td>
+				<td><a href="#/{{ customer.id }}" class="btn btn-sm btn-primary">Detail</a></td>
+				<td><a data-ng-click="deleteCustomer(customer.id)" class="btn btn-sm btn-danger">Delete</a></td>
 			</tr>
 		</tbody>
 	</table>
