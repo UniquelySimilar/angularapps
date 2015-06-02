@@ -31,9 +31,9 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 	$scope.customer.work_phone = '303-555-1212';
 	$scope.resp_data = {};
 
-	$scope.states = stateOptions;
+	$scope.stateOpts = stateOptions;
 
-	$scope.saveCustomer = function() {
+	$scope.createCustomer = function() {
 		// resource object
 		CustomerFactory.save($scope.customer,
 			// Success
@@ -51,8 +51,9 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 	}
 })
 
-.controller('CustomerUpdateController', function($scope, CustomerFactory) {
-	console.log("Hello from CustomerUpdateController");
+.controller('CustomerUpdateController', function($scope, $routeParams, CustomerFactory) {
+	$scope.customer = CustomerFactory.get({id: $routeParams.id});
+	$scope.stateOpts = stateOptions;
 })
 
 .controller('CustomerDeleteController', function($scope, CustomerFactory) {

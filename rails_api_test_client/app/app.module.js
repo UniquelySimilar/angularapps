@@ -14,11 +14,15 @@ customersApp.config( function($routeProvider) {
 		templateUrl : 'app/components/customers/customerNewView.html',
 		controller  : 'CustomerNewController'
 	})
-
 	// Route for the 'show' page
 	.when('/:id', {
 		templateUrl : 'app/components/customers/customerShowView.html',
 		controller  : 'CustomerShowController'
+	})
+	// Route for the 'new' page
+	.when('/update/:id', {
+		templateUrl : 'app/components/customers/customerUpdateView.html',
+		controller  : 'CustomerUpdateController'
 	});
 
 });
