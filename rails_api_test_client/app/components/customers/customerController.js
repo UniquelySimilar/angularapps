@@ -10,6 +10,10 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 	$scope.zipcode_hover = false;
 
 	$scope.deleteCustomer = function(customer_id) {
+		if (!confirm("Delete this customer?")) {
+			return;
+		}
+		
 		CustomerFactory.delete( {id: customer_id},
 			// Success
 			function(){
@@ -40,26 +44,36 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 			function(value, headers){
 				//console.log(value);
 				$location.path('/');
-				//$window.location.href = '/rails_api_test_client/index.html';
 			},
 			// Error
 			function(response){
 				//console.log('Save error callback called');
-				//console.log(response.data);
 				$scope.resp_data = response.data;
 			});
 	}
 })
 
-.controller('CustomerUpdateController', function($scope, $routeParams, CustomerFactory) {
+.controller('CustomerEditController', function($scope, $routeParams, $location, CustomerFactory) {
 	$scope.customer = CustomerFactory.get({id: $routeParams.id});
 	$scope.stateOpts = stateOptions;
+
+	$scope.updateCustomer = function() {
+		// resource object
+		CustomerFactory.update($scope.customer,
+			// Success
+			function(value, headers){
+				//console.log(value);
+				$location.path('/' + $scope.customer.id);
+			},
+			// Error
+			function(response){
+				//console.log('Save error callback called');
+				$scope.resp_data = response.data;
+			});
+	}
 })
 
-.controller('CustomerDeleteController', function($scope, CustomerFactory) {
-	console.log("Hello from CustomerDeleteController");
-});
-
+// TODO: Put this object in a service
 var stateOptions = {
 	'Alabama': 'Alabama',
 	'Alaska': 'Alaska',

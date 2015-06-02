@@ -20,9 +20,9 @@ customersApp.config( function($routeProvider) {
 		controller  : 'CustomerShowController'
 	})
 	// Route for the 'new' page
-	.when('/update/:id', {
-		templateUrl : 'app/components/customers/customerUpdateView.html',
-		controller  : 'CustomerUpdateController'
+	.when('/edit/:id', {
+		templateUrl : 'app/components/customers/customerEditView.html',
+		controller  : 'CustomerEditController'
 	});
 
 });
