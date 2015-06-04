@@ -13,10 +13,16 @@ directiveApp.config( function($routeProvider) {
 		templateUrl : 'app/components/custom/popover/popover.html',
 		controller  : 'popoverController'
 	})
+	.when('/weather', {
+		templateUrl : 'app/components/custom/weather/weatherView.html',
+		controller  : 'weatherController'
+	})
+/* TODO: Finish
 	.when('/collapse', {
 		templateUrl : 'app/components/custom/collapse/collapse.html',
 		controller  : 'collapseController'
 	})
+*/
 	.when('/images', {
 		templateUrl : 'app/components/custom/images/images.html',
 		controller  : 'imagesController'
