@@ -17,6 +17,10 @@ directiveApp.config( function($routeProvider) {
 		templateUrl : 'app/components/custom/weather/weatherView.html',
 		controller  : 'weatherController'
 	})
+	.when('/time', {
+		templateUrl : 'app/components/custom/time/timeView.html',
+		controller  : 'TimeController'
+	})
 /* TODO: Finish
 	.when('/collapse', {
 		templateUrl : 'app/components/custom/collapse/collapse.html',
