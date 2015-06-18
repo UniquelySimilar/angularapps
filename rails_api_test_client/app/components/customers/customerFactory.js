@@ -1,10 +1,28 @@
 customersApp.factory('CustomerFactory', function($resource) {
 	return $resource('http://railsapitestserver.localhost/customerapi/customers/:id', {id: '@id'}, {
+		get: {
+			method: 'GET',
+			headers: {
+				'Authorization': 'Token token=b7627f6e9087c69f'
+			}
+		},
+		save: {
+			method: 'POST',
+			headers: {
+				'Authorization': 'Token token=b7627f6e9087c69f'
+			}
+		},
 		update: {
-			method: 'PUT' // this method issues a PUT request
+			method: 'PUT',
+			headers: {
+				'Authorization': 'Token token=b7627f6e9087c69f'
+			}
 		},
 		delete: {
-			method: 'DELETE' // this method issues a DELETE request
+			method: 'DELETE',
+			headers: {
+				'Authorization': 'Token token=b7627f6e9087c69f'
+			}
 		}
 	});
 });

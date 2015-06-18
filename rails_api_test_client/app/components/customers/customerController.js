@@ -9,6 +9,8 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 	$scope.state_hover = false;
 	$scope.zipcode_hover = false;
 
+	$scope.auth_error = false;
+
 	$scope.deleteCustomer = function(customer_id) {
 		if (!confirm("Delete this customer?")) {
 			return;
@@ -19,12 +21,35 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 			function(){
 				$scope.customers = CustomerFactory.query();
 				//console.log("deleteCustomer() success callback");
+			},
+			// Error
+			function(response){
+				if (response.status == '401') {
+					$scope.auth_error = true;
+				}
+				else {
+					console.log("CustomerFactory.delete() error response");
+					console.log(response);
+				}
 			});
 	}
 })
 
 .controller('CustomerShowController', function($scope, $routeParams, CustomerFactory) {
-	$scope.customer = CustomerFactory.get({id: $routeParams.id});
+	$scope.auth_error = false;
+	$scope.customer = CustomerFactory.get({id: $routeParams.id},
+		// Success
+		function(data) {},
+		// Error
+		function(response) {
+			if (response.status == '401') {
+				$scope.auth_error = true;
+			}
+			else {
+				console.log("CustomerFactory.get() error response");
+				console.log(response);
+			}
+		});
 })
 
 .controller('CustomerNewController', function($scope, $location, CustomerFactory, stateOptions) {
@@ -34,6 +59,8 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 	$scope.customer.home_phone = '303-555-1212';
 	$scope.customer.work_phone = '303-555-1212';
 	$scope.resp_data = {};
+
+	$scope.auth_error = false;
 
 	$scope.stateOpts = stateOptions;
 
@@ -47,8 +74,12 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 			},
 			// Error
 			function(response){
-				//console.log('Save error callback called');
-				$scope.resp_data = response.data;
+				if (response.status == '401') {
+					$scope.auth_error = true;
+				}
+				else {
+					$scope.resp_data = response.data;
+				}
 			});
 	}
 })
@@ -56,6 +87,8 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 .controller('CustomerEditController', function($scope, $routeParams, $location, CustomerFactory, stateOptions) {
 	$scope.customer = CustomerFactory.get({id: $routeParams.id});
 	$scope.stateOpts = stateOptions;
+
+	$scope.auth_error = false;
 
 	$scope.updateCustomer = function() {
 		// resource object
@@ -67,8 +100,15 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 			},
 			// Error
 			function(response){
-				//console.log('Save error callback called');
-				$scope.resp_data = response.data;
+				if (response.status == '401') {
+					$scope.auth_error = true;
+					console.log("CustomerFactory.update() error response");
+					console.log(response);
+				}
+				else {
+					$scope.resp_data = response.data;
+					//console.log("CustomerFactory.update() error response: " + response);
+				}
 			});
 	}
 })
