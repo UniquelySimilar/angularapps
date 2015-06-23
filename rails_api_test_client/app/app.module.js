@@ -1,11 +1,20 @@
 var customersApp = angular.module("railsApiTestClient", ['ngRoute', 'ngResource']);
 
+customersApp.controller('AppController', function($scope, authTokenService) {
+	$scope.auth_token = authTokenService.getAuthToken;
+});
+
 // Configure the routes
 customersApp.config( function($routeProvider) {
 	$routeProvider
 
+	// Route for the 'login' page
+	.when('/login', {
+		templateUrl : 'app/components/login/loginView.html',
+		controller  : 'LoginController'
+	})
 	// Route for the 'index' page
-	.when('/', {
+	.when('/index', {
 		templateUrl : 'app/components/customers/customerIndexView.html',
 		controller  : 'CustomerIndexController'
 	})
@@ -23,6 +32,10 @@ customersApp.config( function($routeProvider) {
 	.when('/edit/:id', {
 		templateUrl : 'app/components/customers/customerEditView.html',
 		controller  : 'CustomerEditController'
+	})
+	// Default
+	.otherwise({
+		redirectTo: '/login'
 	});
 
 });
