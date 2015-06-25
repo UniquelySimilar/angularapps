@@ -1,14 +1,14 @@
 var customersApp = angular.module("railsApiTestClient", ['ngRoute', 'ngResource']);
 
-customersApp.controller('AppController', function($scope, authTokenService) {
-	$scope.auth_token = authTokenService.getAuthToken;
-});
-
 // Configure the routes
 customersApp.config( function($routeProvider) {
 	$routeProvider
 
 	// Route for the 'login' page
+	// Default
+	.when('/', {
+		redirectTo: '/login'
+	})
 	.when('/login', {
 		templateUrl : 'app/components/login/loginView.html',
 		controller  : 'LoginController'

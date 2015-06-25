@@ -70,7 +70,7 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 			// Success
 			function(value, headers){
 				//console.log(value);
-				$location.path('/');
+				$location.path('/index');
 			},
 			// Error
 			function(response){

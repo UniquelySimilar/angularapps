@@ -1,8 +1,14 @@
-customersApp.factory('CustomerFactory', function($resource) {
-	var authToken = 'b7627f6e9087c69f';
+customersApp.factory('CustomerFactory', function($resource, authTokenService) {
+	var authToken = authTokenService.getAuthToken();
+	//console.log('From customerResourceFactory: authToken = ' + authToken);
 	var authHeader = { 'Authorization': 'Token token=' + authToken };
 
 	return $resource('http://railsapitestserver.localhost/customerapi/customers/:id', {id: '@id'}, {
+		query: {
+			method: 'GET',
+			isArray: true,
+			headers: authHeader
+		},
 		get: {
 			method: 'GET',
 			headers: authHeader
