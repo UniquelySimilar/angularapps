@@ -34,7 +34,16 @@ customersApp.controller('LoginController', function($scope, $http, $location, au
 
 	$scope.logout = function() {
 		console.log("Logout function called.");
-		authTokenService.setAuthToken('');
-		$location.path('/login');
+
+		$http.get('http://railsapitestserver.localhost/customerapi/logout')
+		.success(function(data, status, headers, config) {
+			console.log("logout succeeded");
+			authTokenService.setAuthToken('');
+			$location.path('/login');
+		})
+		.error(function(data, status, headers, config) {
+			// called asynchronously if an error occurs
+			// or server returns response with an error status.
+		});
 	}
 });

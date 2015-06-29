@@ -1,9 +1,11 @@
 customersApp.controller('CustomerIndexController', function($scope, CustomerFactory, $location, authTokenService) {
+/*
 	if (authTokenService.getAuthToken() == '') {
 		$location.path('/login');
 	}
-
-	$scope.customers = CustomerFactory.query(
+*/
+	$scope.customers = CustomerFactory.addAuthToken(authTokenService.getAuthToken()).query(
+//	$scope.customers = CustomerFactory.query(
 		// Success
 		function(data) {},
 		// Error
@@ -34,10 +36,10 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 			return;
 		}
 		
-		CustomerFactory.delete( {id: customer_id},
+		CustomerFactory.addAuthToken(authTokenService.getAuthToken()).delete( {id: customer_id},
 			// Success
 			function(){
-				$scope.customers = CustomerFactory.query();
+				$scope.customers = CustomerFactory.addAuthToken(authTokenService.getAuthToken()).query();
 				//console.log("deleteCustomer() success callback");
 			},
 			// Error
@@ -53,9 +55,9 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 	}
 })
 
-.controller('CustomerShowController', function($scope, $routeParams, CustomerFactory) {
+.controller('CustomerShowController', function($scope, $routeParams, CustomerFactory, authTokenService) {
 	$scope.auth_error = false;
-	$scope.customer = CustomerFactory.get({id: $routeParams.id},
+	$scope.customer = CustomerFactory.addAuthToken(authTokenService.getAuthToken()).get({id: $routeParams.id},
 		// Success
 		function(data) {},
 		// Error
@@ -70,7 +72,7 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 		});
 })
 
-.controller('CustomerNewController', function($scope, $location, CustomerFactory, stateOptions) {
+.controller('CustomerNewController', function($scope, $location, CustomerFactory, stateOptions, authTokenService) {
 	$scope.customer = new CustomerFactory();
 	// Set default state value
 	$scope.customer.state = 'Colorado';
@@ -84,7 +86,7 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 
 	$scope.createCustomer = function() {
 		// resource object
-		CustomerFactory.save($scope.customer,
+		CustomerFactory.addAuthToken(authTokenService.getAuthToken()).save($scope.customer,
 			// Success
 			function(value, headers){
 				//console.log(value);
@@ -102,15 +104,16 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 	}
 })
 
-.controller('CustomerEditController', function($scope, $routeParams, $location, CustomerFactory, stateOptions) {
-	$scope.customer = CustomerFactory.get({id: $routeParams.id});
+.controller('CustomerEditController',
+		function($scope, $routeParams, $location, CustomerFactory, stateOptions, authTokenService) {
+	$scope.customer = CustomerFactory.addAuthToken(authTokenService.getAuthToken()).get({id: $routeParams.id});
 	$scope.stateOpts = stateOptions;
 
 	$scope.auth_error = false;
 
 	$scope.updateCustomer = function() {
 		// resource object
-		CustomerFactory.update($scope.customer,
+		CustomerFactory.addAuthToken(authTokenService.getAuthToken()).update($scope.customer,
 			// Success
 			function(value, headers){
 				//console.log(value);
