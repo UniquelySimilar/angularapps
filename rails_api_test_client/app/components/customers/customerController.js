@@ -1,5 +1,23 @@
-customersApp.controller('CustomerIndexController', function($scope, CustomerFactory, $location) {
-	$scope.customers = CustomerFactory.query();
+customersApp.controller('CustomerIndexController', function($scope, CustomerFactory, $location, authTokenService) {
+	if (authTokenService.getAuthToken() == '') {
+		$location.path('/login');
+	}
+
+	$scope.customers = CustomerFactory.query(
+		// Success
+		function(data) {},
+		// Error
+		function(response) {
+			if (response.status == '401') {
+				//console.log("CustomerFactory.query() error response");
+				$location.path('/login');
+			}
+			else {
+				console.log("CustomerFactory.query() error response");
+				console.log(response);
+			}
+		}
+	);
 
 	$scope.predicate = 'name';
 
