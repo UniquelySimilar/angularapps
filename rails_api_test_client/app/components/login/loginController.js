@@ -1,4 +1,4 @@
-customersApp.controller('LoginController', function($scope, $http, $location, authTokenService) {
+customersApp.controller('LoginController', function($scope, $http, $location, $window, authTokenService) {
 	$scope.email = '';
 	$scope.password = '';
 	//authTokenService.setAuthToken('');
@@ -40,6 +40,8 @@ customersApp.controller('LoginController', function($scope, $http, $location, au
 			console.log("logout succeeded");
 			authTokenService.setAuthToken('');
 			$location.path('/login');
+			// Restart Angular so that a new 'CustomerFactory' resource will be created with the new authorization token
+			$window.location.reload();
 		})
 		.error(function(data, status, headers, config) {
 			// called asynchronously if an error occurs
