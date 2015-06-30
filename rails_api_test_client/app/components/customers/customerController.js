@@ -1,11 +1,5 @@
 customersApp.controller('CustomerIndexController', function($scope, CustomerFactory, $location, authTokenService) {
-/*
-	if (authTokenService.getAuthToken() == '') {
-		$location.path('/login');
-	}
-*/
-	$scope.customers = CustomerFactory.addAuthToken(authTokenService.getAuthToken()).query(
-//	$scope.customers = CustomerFactory.query(
+	$scope.customers = CustomerFactory.query(
 		// Success
 		function(data) {},
 		// Error
@@ -21,6 +15,7 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 		}
 	);
 
+	// 'predicate' used in column sorting implementation
 	$scope.predicate = 'name';
 
 	$scope.name_hover = false;
@@ -36,10 +31,10 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 			return;
 		}
 		
-		CustomerFactory.addAuthToken(authTokenService.getAuthToken()).delete( {id: customer_id},
+		CustomerFactory.delete( {id: customer_id},
 			// Success
 			function(){
-				$scope.customers = CustomerFactory.addAuthToken(authTokenService.getAuthToken()).query();
+				$scope.customers = CustomerFactory.query();
 				//console.log("deleteCustomer() success callback");
 			},
 			// Error
@@ -57,7 +52,7 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 
 .controller('CustomerShowController', function($scope, $routeParams, CustomerFactory, authTokenService) {
 	$scope.auth_error = false;
-	$scope.customer = CustomerFactory.addAuthToken(authTokenService.getAuthToken()).get({id: $routeParams.id},
+	$scope.customer = CustomerFactory.get({id: $routeParams.id},
 		// Success
 		function(data) {},
 		// Error
@@ -74,6 +69,13 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 
 .controller('CustomerNewController', function($scope, $location, CustomerFactory, stateOptions, authTokenService) {
 	$scope.customer = new CustomerFactory();
+
+	// TODO: This isn't working.  Re-evaluate using interceptors (see bookmark).
+	//$scope.customer = CustomerFactory.addAuthToken();
+
+	console.log("New CustomerFactory object");
+	console.log($scope.customer);
+
 	// Set default state value
 	$scope.customer.state = 'Colorado';
 	$scope.customer.home_phone = '303-555-1212';
@@ -86,7 +88,7 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 
 	$scope.createCustomer = function() {
 		// resource object
-		CustomerFactory.addAuthToken(authTokenService.getAuthToken()).save($scope.customer,
+		CustomerFactory.save($scope.customer,
 			// Success
 			function(value, headers){
 				//console.log(value);
@@ -106,14 +108,14 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 
 .controller('CustomerEditController',
 		function($scope, $routeParams, $location, CustomerFactory, stateOptions, authTokenService) {
-	$scope.customer = CustomerFactory.addAuthToken(authTokenService.getAuthToken()).get({id: $routeParams.id});
+	$scope.customer = CustomerFactory.get({id: $routeParams.id});
 	$scope.stateOpts = stateOptions;
 
 	$scope.auth_error = false;
 
 	$scope.updateCustomer = function() {
 		// resource object
-		CustomerFactory.addAuthToken(authTokenService.getAuthToken()).update($scope.customer,
+		CustomerFactory.update($scope.customer,
 			// Success
 			function(value, headers){
 				//console.log(value);
