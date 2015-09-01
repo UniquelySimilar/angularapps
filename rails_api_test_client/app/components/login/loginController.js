@@ -1,8 +1,7 @@
 customersApp.controller('LoginController', function($scope, $http, $location, $window, authTokenService) {
 	$scope.email = '';
 	$scope.password = '';
-	//authTokenService.setAuthToken('');
-
+	
 	$scope.login = function() {
 		console.log("login function called");
 		$scope.login_error = false;
@@ -18,7 +17,6 @@ customersApp.controller('LoginController', function($scope, $http, $location, $w
 		.error(function(data, status, headers, config) {
 			// called asynchronously if an error occurs
 			// or server returns response with an error status.
-			// TODO: Display error message
 			console.log("Login function failed. Response status: " + status);
 			$scope.login_error = true;
 
