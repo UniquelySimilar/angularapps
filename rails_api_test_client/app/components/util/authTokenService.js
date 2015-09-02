@@ -13,5 +13,14 @@ customersApp.factory('authTokenService', function($window) {
 		console.log("'setAuthToken()' called. 'sessionStorage.auth_token' set to new value: " + value);
 	};
 
+	authTokenService.isSet = function() {
+		if ($window.sessionStorage.auth_token) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	};
+
 	return authTokenService;
 });

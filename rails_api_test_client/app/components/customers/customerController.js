@@ -1,4 +1,6 @@
 customersApp.controller('CustomerIndexController', function($scope, CustomerFactory, $location, authTokenService) {
+
+	// Query for all customers by default when controller is instantiated
 	$scope.customers = CustomerFactory.query(
 		// Success
 		function(data) {},
