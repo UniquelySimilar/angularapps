@@ -72,12 +72,6 @@ customersApp.controller('CustomerIndexController', function($scope, CustomerFact
 .controller('CustomerNewController', function($scope, $location, CustomerFactory, stateOptions, authTokenService) {
 	$scope.customer = new CustomerFactory();
 
-	// TODO: This isn't working.  Re-evaluate using interceptors (see bookmark).
-	//$scope.customer = CustomerFactory.addAuthToken();
-
-	console.log("New CustomerFactory object");
-	console.log($scope.customer);
-
 	// Set default state value
 	$scope.customer.state = 'Colorado';
 	$scope.customer.home_phone = '303-555-1212';
